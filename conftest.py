@@ -1,5 +1,6 @@
 import pytest
 import requests
+import json
 
 
 @pytest.fixture(scope="session")
@@ -12,14 +13,26 @@ def book_url():
 test_book = {"title": "Unittest tutorial", "author": "InnaK"}
 
 # test books item:
-create_book_list_pos = [{"title": "Djerelo", "author": "Ann Read"},  # usual book (positive case)
-                        {"id": 1, "title": "Unittest tutorial", "author": "InnaK"},
+#create_book_list_pos = [{"title": "Djerelo", "author": "Ann Read"},  # usual book (positive case)
+ #                       {"id": 1, "title": "Unittest tutorial", "author": "InnaK"},
                         # book with id (book should create with id that api will create)
-                        {"title": "1234567890q@#$%^&*()_+ []{}:;'§!<>", "author": "1234567890q@#$%^&*()_+ []{}:;'§!<>"}
+#                        {"title": "1234567890q@#$%^&*()_+ []{}:;'§!<>", "author": "1234567890q@#$%^&*()_+ []{}:;'§!<>"}
                         # field contains spesial symbols
-                        ]
-
+#                        ]
 # list of title(just for readable test name)
+create_book_list_pos=[]
+
+def read_book_list():
+    with open("book_create.json",'r') as file:
+        list_book = file.read()
+        #print(list_book)
+        parsed_string = json.loads(list_book)
+        for i in parsed_string['create_book_list_pos']:
+            create_book_list_pos.append(i)
+        return create_book_list_pos
+
+create_book_list_pos = read_book_list()
+
 id_to_report = [str(book['title']) for book in create_book_list_pos]
 
 # list with negative test data
