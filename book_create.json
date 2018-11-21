@@ -1,0 +1,14 @@
+{
+	"create_book_list_pos": [{
+		"title": "Djerelo",
+		"author": "Ann Read"
+	}, {
+		"title": "Unittest tutorial",
+		"author": "InnaK",
+		"id": 1
+
+	}, {
+		"title": "1234567890q@#$%^&*()_+ []{}:;'§!<>",
+		"author": "1234567890q@#$%^&*()_+ []{}:;'§!<>"
+	}]
+}
